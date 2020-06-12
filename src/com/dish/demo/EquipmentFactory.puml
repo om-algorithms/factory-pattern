@@ -1,0 +1,40 @@
+@startuml
+class EquipmentService {
+    void processEquipment();
+}
+
+interface Equipment{
+    BigDecimal calculateUsageAmount();
+}
+
+class EquipmentA implements Equipment{
+ BigDecimal calculateUsageAmount();
+}
+
+class EquipmentB implements Equipment{
+ BigDecimal calculateUsageAmount();
+}
+
+class EquipmentC implements Equipment{
+ BigDecimal calculateUsageAmount();
+}
+
+
+class EquipmentFactory{
+    Equipment createEquipment(EquipmentType type)
+}
+
+enum EquipmentType{
+    A,
+    B,
+    C
+}
+
+EquipmentFactory -> EquipmentA
+EquipmentFactory -> EquipmentB
+EquipmentFactory -> EquipmentC
+
+EquipmentService -> EquipmentFactory
+EquipmentService -> Equipment
+
+@enduml
